@@ -27,7 +27,7 @@ Multi-UAV monitoring in mountainous areas is not only a path-planning problem. A
 ## What is SENTRA? / SENTRA 框架
 
 <p align="center">
-  <img src="./assets/figures/01_monitoring_scenario.jpg" width="94%" loading="lazy" alt="Heterogeneous multi-UAV monitoring scenario">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/01_monitoring_scenario.jpg" width="94%" alt="Heterogeneous multi-UAV monitoring scenario">
 </p>
 
 SENTRA stands for **Sensor-Network-Terrain-aware Hierarchical Replanning Framework**. Its three planning layers are:
@@ -37,7 +37,7 @@ SENTRA stands for **Sensor-Network-Terrain-aware Hierarchical Replanning Framewo
 3. **Dynamic local layer - Adaptive DWA**: rolling trajectory correction using local obstacle, wind, communication and reference-path states.
 
 <p align="center">
-  <img src="./assets/figures/02_sentra_framework.jpg" width="94%" loading="lazy" alt="SENTRA hierarchical framework and cross-layer feedback">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/02_sentra_framework.jpg" width="94%" alt="SENTRA hierarchical framework and cross-layer feedback">
 </p>
 
 The key design principle is **execution feedback**: segment-level flight time, energy, communication outage and path feasibility are returned to the task layer instead of being replaced by distance-only surrogates.
@@ -49,7 +49,7 @@ The key design principle is **execution feedback**: segment-level flight time, e
 ### 1. Sensor-constrained task allocation / 传感器约束任务分配
 
 <p align="center">
-  <img src="./assets/figures/03_scf_nsga2_workflow.jpg" width="88%" loading="lazy" alt="SCF-NSGA-II task allocation workflow">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/03_scf_nsga2_workflow.jpg" width="88%" alt="SCF-NSGA-II task allocation workflow">
 </p>
 
 SCF-NSGA-II uses a hybrid chromosome containing UAV assignments and within-UAV order keys. The implementation includes sensor compatibility repair, sensing-quality constraints, battery/load surrogate repair, constraint domination, non-dominated sorting, crowding distance and feasible Pareto-solution selection.
@@ -57,7 +57,7 @@ SCF-NSGA-II uses a hybrid chromosome containing UAV assignments and within-UAV o
 ### 2. Terrain- and wind-aware global planning / 地形与风场感知全局规划
 
 <p align="center">
-  <img src="./assets/figures/04_qlpso_path_cost.jpg" width="88%" loading="lazy" alt="QLPSO terrain and wind-aware path cost">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/04_qlpso_path_cost.jpg" width="88%" alt="QLPSO terrain and wind-aware path cost">
 </p>
 
 QLPSO is implemented as a Q-learning-inspired parameter-adaptive particle swarm optimizer. It generates static reference paths between adjacent monitoring tasks while evaluating path length, terrain risk, wind-aware energy, communication-related risk and smoothness.
@@ -67,13 +67,13 @@ QLPSO 在这里不是一个独立学习导航策略，而是一个带有 Q-learn
 ### 3. Adaptive local execution / 自适应局部动态执行
 
 <p align="center">
-  <img src="./assets/figures/05_adaptive_dwa_workflow.jpg" width="88%" loading="lazy" alt="Adaptive DWA local replanning workflow">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/05_adaptive_dwa_workflow.jpg" width="88%" alt="Adaptive DWA local replanning workflow">
 </p>
 
 Adaptive DWA evaluates candidate local trajectories using goal progress, reference-path deviation, obstacle clearance, terrain clearance, wind cost, communication risk and velocity smoothness. The weights adapt to the current local risk state.
 
 <p align="center">
-  <img src="./assets/figures/06_candidate_trajectory_execution.jpg" width="88%" loading="lazy" alt="Candidate trajectory generation and rolling execution">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/06_candidate_trajectory_execution.jpg" width="88%" alt="Candidate trajectory generation and rolling execution">
 </p>
 
 ### 4. Event-triggered hierarchical recovery / 事件触发的分层恢复
@@ -97,17 +97,17 @@ Three cases use the same mountainous terrain and five UAVs, while increasing tas
 | Case 3 | 40 | 4 | High-load multi-disturbance stability |
 
 <p align="center">
-  <img src="./assets/figures/07_case1_task_load.jpg" width="31%" loading="lazy" alt="Case 1 task load">
-  <img src="./assets/figures/08_case2_task_load.jpg" width="31%" loading="lazy" alt="Case 2 task load">
-  <img src="./assets/figures/09_case3_task_load.jpg" width="31%" loading="lazy" alt="Case 3 task load">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/07_case1_task_load.jpg" width="31%" alt="Case 1 task load">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/08_case2_task_load.jpg" width="31%" alt="Case 2 task load">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/09_case3_task_load.jpg" width="31%" alt="Case 3 task load">
 </p>
 
 QLPSO first generates static reference paths; Adaptive DWA then performs rolling local corrections during execution.
 
 <p align="center">
-  <img src="./assets/figures/10_case1_static_dynamic.jpg" width="31%" loading="lazy" alt="Case 1 static and dynamic paths">
-  <img src="./assets/figures/11_case2_static_dynamic.jpg" width="31%" loading="lazy" alt="Case 2 static and dynamic paths">
-  <img src="./assets/figures/12_case3_static_dynamic.jpg" width="31%" loading="lazy" alt="Case 3 static and dynamic paths">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/10_case1_static_dynamic.jpg" width="31%" alt="Case 1 static and dynamic paths">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/11_case2_static_dynamic.jpg" width="31%" alt="Case 2 static and dynamic paths">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/12_case3_static_dynamic.jpg" width="31%" alt="Case 3 static and dynamic paths">
 </p>
 
 Reported results across the three cases:
@@ -130,10 +130,10 @@ Relative to the static QLPSO references, the final dynamic trajectories reduced 
 The global-planner comparison uses the same Case 2 task assignment, environment, path discretization, constraints and random seeds for PSO, CLPSO, APSO and QLPSO. Each method is repeated 30 times under a common budget.
 
 <p align="center">
-  <img src="./assets/figures/13_global_planner_comparison.jpg" width="82%" loading="lazy" alt="Global planner comparison">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/13_global_planner_comparison.jpg" width="82%" alt="Global planner comparison">
 </p>
 <p align="center">
-  <img src="./assets/figures/14_global_planner_convergence.jpg" width="82%" loading="lazy" alt="Global planner convergence">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/14_global_planner_convergence.jpg" width="82%" alt="Global planner convergence">
 </p>
 
 | Planner | Total path length | Energy (x10^5 J) | Makespan |
@@ -148,7 +148,7 @@ Under this experimental setting, QLPSO achieved the lowest sample means for tota
 Adaptive DWA was compared with Original DWA using the same reference paths, dynamic obstacles, wind field and safety margins.
 
 <p align="center">
-  <img src="./assets/figures/15_dwa_ablation.jpg" width="82%" loading="lazy" alt="Original DWA and Adaptive DWA ablation">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/15_dwa_ablation.jpg" width="82%" alt="Original DWA and Adaptive DWA ablation">
 </p>
 
 Adaptive DWA increased mean overall task completion from 81.33% to 89.33% and high-priority task completion from 76.19% to 85.71%. The improvement came with more conservative local corrections and higher path/energy cost, which is an explicit safety-versus-efficiency trade-off rather than a universally lower-cost result.
@@ -165,8 +165,8 @@ Two event types are studied: a sudden path blockage and a localized wind-speed s
 ### Sudden path blockage / 突发路径阻断
 
 <p align="center">
-  <img src="./assets/figures/16_path_blockage_route_comparison.jpg" width="47%" loading="lazy" alt="Path blockage Route A">
-  <img src="./assets/figures/17_path_blockage_route_comparison_alt.jpg" width="47%" loading="lazy" alt="Path blockage Route B">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/16_path_blockage_route_comparison.jpg" width="47%" alt="Path blockage Route A">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/17_path_blockage_route_comparison_alt.jpg" width="47%" alt="Path blockage Route B">
 </p>
 
 Hierarchical replanning reconstructed the affected segment while preserving the mission completion rate and dynamic safety constraints. The event-level replan added only a small operational cost in the paired comparison.
@@ -174,8 +174,8 @@ Hierarchical replanning reconstructed the affected segment while preserving the 
 ### Localized wind surge / 局部风场突变
 
 <p align="center">
-  <img src="./assets/figures/18_wind_surge_route_comparison.jpg" width="47%" loading="lazy" alt="Wind surge Route A">
-  <img src="./assets/figures/19_wind_surge_route_comparison_alt.jpg" width="47%" loading="lazy" alt="Wind surge Route B">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/18_wind_surge_route_comparison.jpg" width="47%" alt="Wind surge Route A">
+  <img src="https://cdn.jsdelivr.net/gh/Minamoto-Chisei-Emperor/SENTRA@89a122d8bcd4ebcd7157239d5df1eba02ca34509/assets/figures/19_wind_surge_route_comparison_alt.jpg" width="47%" alt="Wind surge Route B">
 </p>
 
 For the localized wind-surge event, event-triggered hierarchical replanning reduced cumulative wind risk from 22.15 to 2.29, an average reduction of 89.66%, while increasing dynamic path length and energy consumption by less than 1% in the paired experiment.
@@ -258,3 +258,4 @@ Research interests: multi-UAV systems, mountainous monitoring, task allocation, 
 ## License
 
 No open-source license has been selected yet. Until a license is added, please contact the author before redistribution or commercial use.
+
